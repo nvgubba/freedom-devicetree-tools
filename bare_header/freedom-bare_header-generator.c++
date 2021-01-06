@@ -26,6 +26,7 @@
 
 /* SiFive Blocks */
 #include "bare_header/sifive_aon0.h"
+#include "bare_header/sifive_addr_rmpr0.h"
 #include "bare_header/sifive_buserror0.h"
 #include "bare_header/sifive_ccache0.h"
 #include "bare_header/sifive_clic0.h"
@@ -148,6 +149,7 @@ static void write_config_file(const fdt &dtb, fstream &os, std::string cfg_file,
   devices.push_back(new riscv_plic0(os, dtb));
 
   /* SiFive Blocks */
+  devices.push_back(new sifive_addr_rmpr0(os, dtb));
   devices.push_back(new sifive_aon0(os, dtb));
   devices.push_back(new sifive_buserror0(os, dtb));
   devices.push_back(new sifive_ccache0(os, dtb));
